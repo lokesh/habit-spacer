@@ -18,6 +18,16 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Geist Mono', 'sans-serif'], // Add your font family here
+      },
+      fontSize: {
+        'xs': '.75rem',   // Custom size for small text
+        'sm': '.875rem',  // Custom size for regular small text
+        'base': '1rem',   // Default base size
+        'lg': '1.125rem', // Larger text
+        'xl': '1.25rem',  // Even larger text
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

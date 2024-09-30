@@ -4,6 +4,7 @@
  
 @layer base {
   :root {
+    
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -74,5 +75,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+html {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
   }
 }
