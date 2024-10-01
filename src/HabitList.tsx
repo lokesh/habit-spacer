@@ -16,7 +16,7 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
         <thead>
           <tr>
             <th className="p-2 text-left"></th>
-            <th className="p-2 text-left"><div>Due Date</div></th>
+            {/* <th className="p-2 text-left"><div>Due Date</div></th> */}
             {dates.map((date, index) => (
               <th 
                 key={date.toISOString()} 

@@ -76,7 +76,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
           </div>
         )}
       </td>
-      <td className="border-none" style={{ width: '8em' }}>
+      {/* <td className="border-none" style={{ width: '8em' }}>
         {(() => {
           const dueDate = new Date(habit.dueDate);
           const currentYear = new Date().getFullYear();
@@ -86,7 +86,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
           }
           return dueDate.toLocaleDateString('en-US', options);
         })()}
-      </td>
+      </td> */}
       {dates.map(date => {
         const dateString = date.toISOString().split('T')[0];
         const isCompleted = habit.completedDates.includes(dateString);
@@ -94,12 +94,16 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
         return (
           <td key={dateString} className={`border-none text-center`}>
             <Button
-              className={`rounded-full border-0 ${isDueDate ? ' border-4 border-orange-500' : ''}`}
+              className={`rounded-full border-0 ${isDueDate ? 'var(--primary)' : ''}`}
+              style={{
+                borderWidth: isDueDate ? '3px' : '2px',
+                borderColor: isDueDate ? 'rgb(249 115 22)' : 'transparent'
+              }}
               variant={isCompleted ? "default" : "outline"}
               size="icon"
               onClick={() => toggleHabitCompletion(habit.id, date)}
             >
-              {isCompleted ? <Check size={16} /> : null }
+              {isCompleted ? <Check size={20} strokeWidth={3} /> : null }
             </Button>
           </td>
         );

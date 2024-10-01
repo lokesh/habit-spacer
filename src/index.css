@@ -20,6 +20,15 @@
     --border: var(--foreground);
     --input: var(--foreground);
 
+    /*
+    BLUE: 220, 97%, 59%
+    ORANGE: 25, 95%, 53%
+    GREEN: 148, 67%, 51%
+    */
+    
+    --success: 148, 67%, 51%;
+    --warning: 25, 95%, 53%;
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
