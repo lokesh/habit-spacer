@@ -36,7 +36,6 @@ const HabitTracker: React.FC = () => {
       newStartDate = new Date(startDate);
       newStartDate.setDate(startDate.getDate() + (direction === 'back' ? -14 : 14));
     }
-    console.log(newStartDate);
     setStartDate(newStartDate);
   };
 
