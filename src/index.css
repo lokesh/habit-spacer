@@ -5,8 +5,8 @@
 @layer base {
   :root {
     
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 75, 18%, 96%;
+    --foreground: 0, 0%, 7%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -17,8 +17,8 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: var(--foreground);
+    --input: var(--foreground);
 
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
@@ -32,7 +32,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 215 20.2% 65.1%;
+    --ring: 205, 91%, 61%;
 
     --radius: 0.5rem;
   }
@@ -85,5 +85,31 @@ html {
 @media (min-width: 768px) {
   html {
     font-size: 14px;
+  }
+}
+
+@layer components {
+  .habit-table {
+    @apply w-full border-collapse table-auto;
+  }
+
+  .habit-table th,
+  .habit-table td {
+    @apply p-2;
+    border: none;
+  }
+
+  .habit-table thead th {
+    @apply text-left font-semibold;
+  }
+
+  .habit-table tbody tr:nth-child(even) {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  input {
+    @apply bg-white;
   }
 }

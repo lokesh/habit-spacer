@@ -32,7 +32,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
 
   return (
     <tr>
-      <td className="border p-2">
+      <td className="border-none">
         {isEditing ? (
           <div className="flex items-center">
             <Input
@@ -69,21 +69,30 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
           </div>
         )}
       </td>
-      <td className="border p-2 text-center" style={{ width: '10em' }}>
-        {formatDate(habit.dueDate)}
+      <td className="border-none" style={{ width: '8em' }}>
+        {(() => {
+          const dueDate = new Date(habit.dueDate);
+          const currentYear = new Date().getFullYear();
+          const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' };
+          if (dueDate.getFullYear() !== currentYear) {
+            options.year = 'numeric';
+          }
+          return dueDate.toLocaleDateString('en-US', options);
+        })()}
       </td>
       {dates.map(date => {
         const dateString = date.toISOString().split('T')[0];
         const isCompleted = habit.completedDates.includes(dateString);
         const isDueDate = habit.dueDate.split('T')[0] === dateString;
         return (
-          <td key={dateString} className={`border p-2 text-center ${isDueDate ? 'bg-yellow-300' : ''}`}>
+          <td key={dateString} className={`border-none text-center`}>
             <Button
+              className={`rounded-full ${isDueDate ? 'border-orange-500' : ''}`}
               variant={isCompleted ? "default" : "outline"}
               size="icon"
               onClick={() => toggleHabitCompletion(habit.id, date)}
             >
-              {isCompleted ? <Check size={16} /> : <X size={16} />}
+              {isCompleted ? <Check size={16} /> : null }
             </Button>
           </td>
         );

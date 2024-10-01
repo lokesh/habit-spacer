@@ -22,7 +22,7 @@ const AddHabitForm: React.FC = () => {
   };
 
   return (
-    <div className="flex mb-4">
+    <div className="p-4 bg-white rounded-lg flex mb-4">
       <Input
         type="text"
         value={newHabit}

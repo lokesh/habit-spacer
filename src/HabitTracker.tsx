@@ -36,8 +36,10 @@ const HabitTracker: React.FC = () => {
   return (
     <div className="p-4">
       <AddHabitForm />
-      <DateNavigation onNavigate={navigateDates} />
-      <HabitList dates={dates} />
+      <div className="bg-white p-4 rounded-lg">  
+        <DateNavigation onNavigate={navigateDates} />
+        <HabitList dates={dates} />
+      </div>
     </div>
   );
 };

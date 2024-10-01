@@ -48,3 +48,57 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+## Architecture
+
+Our Habit Tracker application is composed of several React components, each with specific responsibilities. Here's an overview of the component hierarchy and their roles:
+
+```
+App
+└── HabitTracker
+    ├── AddHabitForm
+    └── HabitList
+        └── HabitItem (multiple)
+```
+
+### Component Responsibilities
+
+1. **App**: The root component that renders the main application structure.
+2. **HabitTracker**: Manages the overall state of habits and orchestrates the main functionality.
+3. **AddHabitForm**: Handles the creation of new habits.
+4. **HabitList**: Renders the list of all habits.
+5. **HabitItem**: Represents an individual habit, displaying its details and tracking progress.
+
+### Component Relationships
+
+```
++-------------+     +----------------+
+|    App      | --> |  HabitTracker  |
++-------------+     +----------------+
+                           |
+                           |
+              +------------+------------+
+              |                         |
+     +----------------+        +-----------------+
+     |  AddHabitForm  |        |    HabitList    |
+     +----------------+        +-----------------+
+                                       |
+                                       |
+                               +-----------------+
+                               |    HabitItem    |
+                               +-----------------+
+```
+
+### Key Interactions
+
+1. **HabitTracker** maintains the state of all habits.
+2. **AddHabitForm** submits new habits to **HabitTracker**.
+3. **HabitList** receives the list of habits from **HabitTracker** and renders them.
+4. **HabitItem** components are created for each habit in **HabitList**.
+5. User interactions with **HabitItem** (e.g., marking as complete) update the state in **HabitTracker**.
+
+This architecture promotes a clear separation of concerns and allows for easy management of habit-related functionality throughout the application.
+
+

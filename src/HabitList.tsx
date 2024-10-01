@@ -12,15 +12,15 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse border-none table-auto">
         <thead>
           <tr>
-            <th className="border p-2"></th>
-            <th className="border p-2" style={{ width: '10em' }}>Due Date</th>
+            <th className="p-2 text-left"></th>
+            <th className="p-2 text-left"><div>Due Date</div></th>
             {dates.map((date, index) => (
               <th 
                 key={date.toISOString()} 
-                className={`border p-2 ${date.toDateString() === today.toDateString() ? 'bg-green-200' : ''}`}
+                className={`p-2 text-center align-bottom ${date.toDateString() === today.toDateString() ? 'bg-green-100' : ''}`}
               >
                 {(index === 0 || date.getDate() === 1) ? (
                   <>
