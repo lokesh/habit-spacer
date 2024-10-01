@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-custom-bg" style={{ maxWidth: '60rem' }}>
+    <div className="min-h-screen bg-custom-bg mx-auto" style={{ maxWidth: '60rem' }}>
       <HabitProvider>
         <HabitTracker />
       </HabitProvider>

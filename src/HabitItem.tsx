@@ -46,13 +46,13 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
           </div>
         ) : (
           <div 
-            className="flex items-center justify-between"
+            className="flex items-center justify-between font-bold relative"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
             {habit.name}
             {isHovering && (
-              <div>
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-md p-1 flex">
                 <Button onClick={() => setIsEditing(true)} variant="ghost" size="icon"><Edit2 size={16} /></Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>

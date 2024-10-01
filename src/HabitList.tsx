@@ -11,22 +11,22 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
   const today = new Date();
 
   return (
-    <div className="overflow-x-auto">
+    <div>
       <table className="w-full border-collapse border-none table-auto">
         <thead>
           <tr>
-            <th className="p-2 text-left"></th>
-            {/* <th className="p-2 text-left"><div>Due Date</div></th> */}
+            <th className="p-2"></th>
+
             {dates.map((date, index) => (
               <th 
                 key={date.toISOString()} 
-                className="p-2 text-center align-bottom"
+                className="p-2 text-center align-bottom uppercase"
               >
                 <div className="flex flex-col items-center justify-center">
                   {(index === 0 || date.getDate() === 1) ? (
                     <>
-                      <div>{date.toLocaleDateString('en-US', { month: 'short' })}</div>
-                    <div className={`w-10 flex items-center justify-center ${date.toDateString() === today.toDateString() ? 'bg-green-500 rounded-full' : ''}`}>
+                      <div className="text-sm font-bold">{date.toLocaleDateString('en-US', { month: 'short' })}</div>
+                    <div className={`w-10 flex items-center justify-center ${date.toDateString() === today.toDateString() ? 'bg-blue-500 text-white rounded-full' : ''}`}>
                       {date.getDate()}
                     </div>
                     </>

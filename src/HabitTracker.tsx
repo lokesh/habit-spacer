@@ -27,16 +27,23 @@ const HabitTracker: React.FC = () => {
     setDates([...previousThreeDays, ...nextTenDays]);
   };
 
-  const navigateDates = (direction: 'back' | 'forward') => {
-    const newStartDate = new Date(startDate);
-    newStartDate.setDate(startDate.getDate() + (direction === 'back' ? -14 : 14));
+  const navigateDates = (direction: 'back' | 'forward' | 'today') => {
+    let newStartDate: Date;
+    if (direction === 'today') {
+      const today = new Date();
+      newStartDate = new Date(today.setDate(today.getDate())); // Set to 3 days before today
+    } else {
+      newStartDate = new Date(startDate);
+      newStartDate.setDate(startDate.getDate() + (direction === 'back' ? -14 : 14));
+    }
+    console.log(newStartDate);
     setStartDate(newStartDate);
   };
 
   return (
     <div className="p-4">
       <AddHabitForm />
-      <div className="bg-white p-4 rounded-lg">  
+      <div className="bg-white p-4 rounded-lg border-2">  
         <DateNavigation onNavigate={navigateDates} />
         <HabitList dates={dates} />
       </div>
