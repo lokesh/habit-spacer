@@ -19,7 +19,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Geist Mono', 'sans-serif'], // Add your font family here
+        sans: ['Geist', 'sans-serif'], // Add your font family here
       },
       fontSize: {
         'xs': '.75rem',   // Custom size for small text

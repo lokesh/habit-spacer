@@ -3,7 +3,7 @@ import { useHabits } from './HabitContext';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Edit2, Trash2, Check, X } from 'lucide-react';
+import { Edit2, Trash2, Check } from 'lucide-react';
 
 interface HabitItemProps {
   habit: {
@@ -19,6 +19,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
   const { editHabit, deleteHabit, toggleHabitCompletion } = useHabits();
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(habit.name);
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleEdit = () => {
     editHabit(habit.id, editedName);
@@ -44,28 +45,34 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
             <Button onClick={handleEdit} variant="ghost" size="icon"><Check size={16} /></Button>
           </div>
         ) : (
-          <div className="flex items-center justify-between">
+          <div 
+            className="flex items-center justify-between"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
             {habit.name}
-            <div>
-              <Button onClick={() => setIsEditing(true)} variant="ghost" size="icon"><Edit2 size={16} /></Button>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="ghost" size="icon"><Trash2 size={16} /></Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete the habit.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteHabit(habit.id)}>Delete</AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </div>
+            {isHovering && (
+              <div>
+                <Button onClick={() => setIsEditing(true)} variant="ghost" size="icon"><Edit2 size={16} /></Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="ghost" size="icon"><Trash2 size={16} /></Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently delete the habit.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={() => deleteHabit(habit.id)}>Delete</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
+            )}
           </div>
         )}
       </td>
@@ -87,7 +94,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
         return (
           <td key={dateString} className={`border-none text-center`}>
             <Button
-              className={`rounded-full ${isDueDate ? 'border-orange-500' : ''}`}
+              className={`rounded-full border-0 ${isDueDate ? ' border-4 border-orange-500' : ''}`}
               variant={isCompleted ? "default" : "outline"}
               size="icon"
               onClick={() => toggleHabitCompletion(habit.id, date)}

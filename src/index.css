@@ -78,15 +78,6 @@
   }
 }
 
-html {
-  font-size: 12px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
 
 @layer components {
   .habit-table {
@@ -108,8 +99,3 @@ html {
   }
 }
 
-@layer components {
-  input {
-    @apply bg-white;
-  }
-}

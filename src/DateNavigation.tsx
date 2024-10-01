@@ -8,9 +8,9 @@ interface DateNavigationProps {
 
 const DateNavigation: React.FC<DateNavigationProps> = ({ onNavigate }) => {
   return (
-    <div className="flex justify-between mb-2">
-      <Button onClick={() => onNavigate('back')} variant="outline" size="icon"><ChevronLeft size={16} /></Button>
-      <Button onClick={() => onNavigate('forward')} variant="outline" size="icon"><ChevronRight size={16} /></Button>
+    <div className="flex gap-2 mb-2 justify-end">
+      <Button onClick={() => onNavigate('back')} size="icon"><ChevronLeft size={24} strokeWidth={2} /></Button>
+      <Button onClick={() => onNavigate('forward')}  size="icon"><ChevronRight size={24} strokeWidth={2} /></Button>
     </div>
   );
 };

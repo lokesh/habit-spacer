@@ -31,7 +31,7 @@ const AddHabitForm: React.FC = () => {
         placeholder="Enter a song..."
         className="mr-2"
       />
-      <Button onClick={handleAddHabit}><Music size={16} className="mr-2" /> Add Song</Button>
+      <Button onClick={handleAddHabit}><Music size={20} className="mr-2" /> Add Song</Button>
     </div>
   );
 };
