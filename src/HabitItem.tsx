@@ -91,6 +91,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
         const dateString = date.toISOString().split('T')[0];
         const isCompleted = habit.completedDates.includes(dateString);
         const isDueDate = habit.dueDate.split('T')[0] === dateString;
+        // const isPastDueDate = new Date(habit.dueDate) < date;
         return (
           <td key={dateString} className={`border-none text-center`}>
             <Button
