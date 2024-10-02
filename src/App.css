@@ -12,8 +12,17 @@ th {
   /* text-transform: uppercase; */
 }
 
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 0;
+}
+
 body,
 input,
 button {
   /* font-weight: 600; */
 }
+

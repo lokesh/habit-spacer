@@ -53,11 +53,12 @@ export default tseslint.config({
 
 ## Architecture
 
-Our Habit Tracker application is composed of several React components, each with specific responsibilities. Here's an overview of the component hierarchy and their roles:
+Our Habit Tracker application is composed of several React components, each with specific responsibilities. Here's an updated overview of the component hierarchy and their roles:
 
 ```
 App
 └── HabitTracker
+    ├── DateNavigation
     ├── AddHabitForm
     └── HabitList
         └── HabitItem (multiple)
@@ -67,9 +68,10 @@ App
 
 1. **App**: The root component that renders the main application structure.
 2. **HabitTracker**: Manages the overall state of habits and orchestrates the main functionality.
-3. **AddHabitForm**: Handles the creation of new habits.
-4. **HabitList**: Renders the list of all habits.
-5. **HabitItem**: Represents an individual habit, displaying its details and tracking progress.
+3. **DateNavigation**: Handles navigation between different dates for habit tracking.
+4. **AddHabitForm**: Handles the creation of new habits.
+5. **HabitList**: Renders the list of all habits.
+6. **HabitItem**: Represents an individual habit, displaying its details and tracking progress.
 
 ### Component Relationships
 
@@ -80,25 +82,31 @@ App
                            |
                            |
               +------------+------------+
-              |                         |
-     +----------------+        +-----------------+
-     |  AddHabitForm  |        |    HabitList    |
-     +----------------+        +-----------------+
-                                       |
-                                       |
-                               +-----------------+
-                               |    HabitItem    |
-                               +-----------------+
+              |            |            |
+   +-------------------+   |    +-----------------+
+   |  DateNavigation   |   |    |    HabitList    |
+   +-------------------+   |    +-----------------+
+                           |            |
+                  +----------------+    |
+                  |  AddHabitForm  |    |
+                  +----------------+    |
+                                        |
+                                +-----------------+
+                                |    HabitItem    |
+                                +-----------------+
 ```
 
 ### Key Interactions
 
-1. **HabitTracker** maintains the state of all habits.
-2. **AddHabitForm** submits new habits to **HabitTracker**.
-3. **HabitList** receives the list of habits from **HabitTracker** and renders them.
-4. **HabitItem** components are created for each habit in **HabitList**.
-5. User interactions with **HabitItem** (e.g., marking as complete) update the state in **HabitTracker**.
+1. **HabitTracker** maintains the state of all habits and the current date.
+2. **DateNavigation** allows users to change the current date, updating the state in **HabitTracker**.
+3. **AddHabitForm** submits new habits to **HabitTracker**.
+4. **HabitList** receives the list of habits from **HabitTracker** and renders them.
+5. **HabitItem** components are created for each habit in **HabitList**.
+6. User interactions with **HabitItem** (e.g., marking as complete) update the state in **HabitTracker**.
 
 This architecture promotes a clear separation of concerns and allows for easy management of habit-related functionality throughout the application.
 
+### State Management
 
+The application uses React's Context API for state management. The `HabitContext` provides the habit data and related functions to all components that need them, eliminating the need for prop drilling.
