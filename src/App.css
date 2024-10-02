@@ -8,6 +8,10 @@ html {
   }
 }
 
+a {
+  text-decoration: underline;
+}
+
 table {
   border-collapse: collapse;
 }
