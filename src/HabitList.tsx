@@ -15,7 +15,7 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
       <table className="w-full border-collapse border-none table-auto">
         <thead>
           <tr>
-            <th className="p-2 w-40"></th>
+            <th className="p-2 w-40" style={{ minWidth: '14rem' }}></th>
 
             {dates.map((date, index) => (
               <th 
@@ -33,7 +33,7 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
                     }
                     return null;
                   })()}
-                  <div className={`w-10 flex items-center justify-center ${date.toDateString() === today.toDateString() ? 'bg-blue-500 text-white rounded-full' : ''}`}>
+                  <div className={`w-8 flex items-center justify-center ${date.toDateString() === today.toDateString() ? 'bg-blue-500 text-white rounded-full' : ''}`}>
                     {date.getDate()}
                   </div>
                 </div>

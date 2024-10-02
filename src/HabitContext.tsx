@@ -99,12 +99,8 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           completionCount += 1;
         }
 
-        // Recalculate the due date based on the updated completion count and dates
-        dueDate = calculateNextDueDate({ 
-          ...habit, 
-          completionCount, 
-          completedDates 
-        });
+        // Recalculate the due date based on the updated completion count
+        dueDate = calculateNextDueDate({ ...habit, completionCount });
 
         return { ...habit, completedDates, completionCount, dueDate };
       }

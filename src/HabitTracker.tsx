@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHabits } from './HabitContext';
 import HabitList from './HabitList';
 import AddHabitForm from './AddHabitForm';
 import DateNavigation from './DateNavigation';

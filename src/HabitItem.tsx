@@ -26,10 +26,6 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
     setIsEditing(false);
   };
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
 
   return (
     <tr>
