@@ -26,7 +26,7 @@ const HabitList: React.FC<HabitListProps> = ({ dates }) => {
                   {(() => {
                     if (index === 0 || date.getDate() === 1) {
                       return (
-                        <div className="text-sm font-bold">
+                        <div className="text-sm font-bold" style={{ position: 'relative', top: '2px' }}>
                           {date.toLocaleDateString('en-US', { month: 'short' })}
                         </div>
                       );

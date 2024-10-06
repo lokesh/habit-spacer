@@ -38,7 +38,7 @@ const HabitItem: React.FC<HabitItemProps> = ({ habit, dates }) => {
           onMouseLeave={() => setIsHovering(false)}
         >
           {habit.url ? (
-            <a href={habit.url} class="underline" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(habit.url, '_blank'); }}>
+            <a href={habit.url} className="underline" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(habit.url, '_blank'); }}>
               {habit.name}
             </a>
           ) : (

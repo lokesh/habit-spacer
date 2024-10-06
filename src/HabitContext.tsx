@@ -128,18 +128,24 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
    * @param {Habit} habit - The habit to calculate the next due date for
    * @returns {string} The next due date as an ISO string
    */
-  const calculateNextDueDate = (habit: Habit): string => {
-    const today = new Date();
-    if (habit.completionCount === 0) {
-      return today.toISOString(); // If never completed, due date is today
-    }
-    // Calculate days to add using exponential backoff: 2^(completionCount - 1)
-    const daysToAdd = Math.pow(2, habit.completionCount - 1);
-    const lastCompletedDate = new Date(habit.completedDates[habit.completedDates.length - 1] || today);
-    const nextDueDate = new Date(lastCompletedDate);
+  const calculateNextDueDate = (completedDates: string[]): string => {
     
-    nextDueDate.setDate(lastCompletedDate.getDate() + daysToAdd);
-    return nextDueDate.toISOString();
+    // const today = new Date();
+    // console.log(habit.completionCount);
+    // console.log(habit.completedDates);
+    // if (habit.completionCount === 0) {
+    //   return today.toISOString(); // If never completed, due date is today
+    // }
+    
+    // // Calculate days to add using exponential backoff: 2^(completionCount - 1)
+    // const daysToAdd = Math.pow(2, habit.completionCount);
+    // const lastCompletedDate = new Date(habit.completedDates[habit.completedDates.length - 1] || today);
+    // const nextDueDate = new Date(lastCompletedDate);
+    
+    // nextDueDate.setDate(lastCompletedDate.getDate() + daysToAdd);
+    // return nextDueDate.toISOString();
+    console.log(completedDates);
+    return new Date(completedDates[0]).toISOString();
   };
 
   /**
@@ -166,8 +172,7 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         }
 
         // Recalculate the due date based on the updated completion count
-        dueDate = calculateNextDueDate({ ...habit, completionCount });
-
+        dueDate = calculateNextDueDate(completedDates);
         return { ...habit, completedDates, completionCount, dueDate };
       }
       return habit;
